@@ -79,6 +79,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final TextAlign textAlign;
   final TextAlignVertical textAlignVertical;
   final EdgeInsets scrollPadding;
+  final TextDirection textDirection;
 
   final FocusNode? focusNode;
   final Iterable<String>? autofillHints;
@@ -122,7 +123,9 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.focusNode,
       this.cursorColor,
       this.autofillHints,
-      this.countries})
+      this.countries,
+      this.textDirection = TextDirection.ltr,
+      })
       : super(key: key);
 
   @override
@@ -390,7 +393,7 @@ class _InputWidgetView
 
     return Container(
       child: Row(
-        textDirection: TextDirection.ltr,
+        textDirection: widget.textDirection,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -420,7 +423,7 @@ class _InputWidgetView
           Flexible(
             child: TextFormField(
               key: Key(TestHelper.TextInputKeyValue),
-              textDirection: TextDirection.ltr,
+              textDirection: widget.textDirection,
               controller: state.controller,
               cursorColor: widget.cursorColor,
               focusNode: widget.focusNode,
